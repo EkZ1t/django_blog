@@ -38,3 +38,14 @@ class CustomUser(AbstractBaseUser):
     USERNAME_FIELD = 'username'
     
     objects = CustomUserManager()
+    
+    def has_module_perms(self, app_label):
+        return self.is_staff 
+    
+    def has_perm(self, obj=None):
+        return self.is_staff 
+    
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+    
